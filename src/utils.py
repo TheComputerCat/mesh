@@ -1,9 +1,14 @@
-def indexVariableToNamed(i):
-    if i > 34 or i < 0:
-        raise "Variable out of range"
-    days = ['M', 'T', 'W', 'TH', 'F', 'S', 'SU']
-    shifts = ['N', 'D1', 'D2', 'E1', 'E2']
-    return "{}_{}".format(days[i//5], shifts[i%5])
+VARIABLES = [
+    "M_N", "M_D1", "M_D2", "M_E1", "M_E2",
+    "T_N", "T_D1", "T_D2", "T_E1", "T_E2",
+    "W_N", "W_D1", "W_D2", "W_E1", "W_E2",
+    "TH_N", "TH_D1", "TH_D2", "TH_E1", "TH_E2",
+    "F_N", "F_D1", "F_D2", "F_E1", "F_E2",
+    "S_N", "S_D1", "S_D2", "S_E1", "S_E2",
+    "SU_N", "SU_D1", "SU_D2", "SU_E1", "SU_E2"
+]
+
+DAYS = ['M', 'T', 'W', 'TH', 'F', 'S', 'SU']
 
 def get_shift_times(rule):
     _, shift = rule.split("_")
