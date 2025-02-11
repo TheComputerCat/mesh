@@ -14,8 +14,8 @@ def check_assignment_satisfaction(assignment, constraint_functions):
     for CF in constraint_functions:
         fun = constraint_functions[CF]['fun']
         variables = constraint_functions[CF]['variables']
-        args = {k: assignment[k] for k in assignment if k in variables}
-        is_satisfied = is_satisfied and fun(**args)
+        args = (assignment[k] for k in assignment if k in variables)
+        is_satisfied = is_satisfied and fun(*args)
         if not is_satisfied:
             return False
 

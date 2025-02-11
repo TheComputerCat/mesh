@@ -4,8 +4,8 @@ import src.utils as utils
 def checker1(M_D1, M_D2):
     return M_D1 != M_D2
 
-def checker2(M_D1, M_E1):
-    return M_D1 == M_E1
+def checker2(a, b):
+    return a == b
 
 class TestUtils(unittest.TestCase):
 
