@@ -13,8 +13,8 @@ def checkSatisfy(assignment, constrainFunctions):
     satisfy = True
     for CF in constrainFunctions:
         fun = constrainFunctions[CF]['fun']
-        domain = constrainFunctions[CF]['domain']
-        args = {k: assignment[k] for k in assignment if k in domain}
+        variables = constrainFunctions[CF]['variables']
+        args = {k: assignment[k] for k in assignment if k in variables}
         satisfy = satisfy and fun(**args)
         if not satisfy:
             return False
