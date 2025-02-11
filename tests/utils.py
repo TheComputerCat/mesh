@@ -9,17 +9,17 @@ def checker2(M_D1, M_E1):
 
 class TestUtils(unittest.TestCase):
 
-    def testNumToRuleName(self):
-        self.assertEqual(utils.conVars(0), "M_N")
-        self.assertEqual(utils.conVars(5), "T_N")
-        self.assertEqual(utils.conVars(34), "SU_E2")
+    def test_index_to_rule_name(self):
+        self.assertEqual(utils.indexVariableToNamed(0), "M_N")
+        self.assertEqual(utils.indexVariableToNamed(5), "T_N")
+        self.assertEqual(utils.indexVariableToNamed(34), "SU_E2")
 
-    def testRuleNameToDate(self):
-        self.assertEqual(utils.dates("M_N"), [23, 7])
-        self.assertEqual(utils.dates("M_D1"), [7, 15])
+    def test_rulen_name_to_date(self):
+        self.assertEqual(utils.get_shift_times("M_N"), [23, 7])
+        self.assertEqual(utils.get_shift_times("M_D1"), [7, 15])
 
-    def testAssignmentChecker(self):
-        constrainFunctions = {
+    def test_assignment_checker(self):
+        constraint_functions = {
             "checker1": {
                 "fun": checker1,
                 "variables": ["M_D1", "M_D2"]
@@ -33,8 +33,8 @@ class TestUtils(unittest.TestCase):
                 "variables": ["M_D1", "M_D2", "M_E1"]
             }
         }
-        self.assertFalse(utils.checkSatisfy({ "M_D1": 1 , "M_D2":1, "M_E1":1}, constrainFunctions))
-        self.assertTrue(utils.checkSatisfy({ "M_D1": 1 , "M_D2":2, "M_E1":1}, constrainFunctions))
+        self.assertFalse(utils.check_assignment_satisfaction({ "M_D1": 1 , "M_D2":1, "M_E1":1}, constraint_functions))
+        self.assertTrue(utils.check_assignment_satisfaction({ "M_D1": 1 , "M_D2":2, "M_E1":1}, constraint_functions))
 
 if __name__ == '__main__':
     unittest.main()
