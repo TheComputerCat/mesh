@@ -5,7 +5,7 @@ def only_one_shift_per_time_creator(variables):
     functionObjects = ""
     for i, variable in enumerate(variables):
         functionObject = f"""
-"only_one_shift_per_time_M{i}": {{
+"only_one_shift_per_time_{variable[0].split('_')[0]}{i%4}": {{
     "fun": only_one_shift_per_time,
     "variables": ["{'", "'.join(variable)}"]
 }},
