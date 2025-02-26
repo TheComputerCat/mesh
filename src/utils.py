@@ -28,7 +28,7 @@ def check_assignment_satisfaction(assignment, constraint_functions):
 
 def variables_with_shared_time(): # This could be more general
     variables = []
-    formatter = lambda day: [[f"{day}_N", f"{day}_D2"], [f"{day}_D1", f"{day}_D2"], [f"{day}_D1", f"{day}_E1"], [f"{day}_E1", f"{day}_E2"]]
+    formatter = lambda day: [[f"{day}_N", f"{day}_D2"], [f"{day}_D1", f"{day}_D2"], [f"{day}_D1", f"{day}_E2"], [f"{day}_E1", f"{day}_E2"]]
     for day in DAYS:
         variables.extend(formatter(day))
     return variables
