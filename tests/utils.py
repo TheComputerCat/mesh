@@ -34,5 +34,9 @@ class TestUtils(unittest.TestCase):
         self.assertFalse(utils.check_assignment_satisfaction({ "M_D1": 1 , "M_D2":1, "M_E1":1}, constraint_functions))
         self.assertTrue(utils.check_assignment_satisfaction({ "M_D1": 1 , "M_D2":2, "M_E1":1}, constraint_functions))
 
+    def test_prev_calculation(self):
+        self.assertEqual(utils.prev('T_N'), ['M_D1', 'M_E1', 'M_E2'])
+        self.assertEqual(utils.prev('T_D1'), ['M_E1', 'T_N'])
+        self.assertEqual(utils.prev('T_E2'), ['T_N', 'T_D2'])
 if __name__ == '__main__':
     unittest.main()

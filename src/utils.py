@@ -36,3 +36,27 @@ def variables_with_shared_time(): # This could be more general
     for day in DAYS:
         variables.extend(formatter(day))
     return variables
+
+def is_prev_day_of(shift1, shift2):
+    day1, _ = shift1.split("_")
+    day2, _ = shift2.split("_")
+    if DAYS.index(day1) - DAYS.index(day2) in {0, 1}:
+        return True
+
+def shifts_are_speared_by_ten_hours(shift1, shift2):
+    if not is_prev_day_of(shift1, shift2):
+        return False
+
+    dS10, dS11 = get_shift_times(shift1)
+    dS20, dS21 = get_shift_times(shift2)
+
+    if dS21 > dS10 - 10 and dS21 <= dS10:
+        return True
+    return False
+
+def prev(shift):
+    res = []
+    for var in VARIABLES:
+        if shifts_are_speared_by_ten_hours(shift, var):
+            res.append(var)
+    return res
