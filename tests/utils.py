@@ -10,8 +10,11 @@ def checker2(a, b):
 class TestUtils(unittest.TestCase):
 
     def test_rulen_name_to_date(self):
-        self.assertEqual(utils.get_shift_times("M_N"), [23, 7])
-        self.assertEqual(utils.get_shift_times("M_D1"), [7, 15])
+        self.assertEqual(utils.get_shift_times("M_N"), [0, 8])
+        self.assertEqual(utils.get_shift_times("M_D1"), [8, 16])
+        self.assertEqual(utils.get_shift_times("T_N"), [24, 32])
+        self.assertEqual(utils.get_shift_times("SU_N"), [144, 152])
+        self.assertEqual(utils.get_shift_times("F_D2"), [101, 109])
 
     def test_assignment_checker(self):
         constraint_functions = {

@@ -10,9 +10,13 @@ VARIABLES = [
 
 DAYS = ['M', 'T', 'W', 'TH', 'F', 'S', 'SU']
 
+SHIFT_LONG= 8
+
 def get_shift_times(rule):
-    _, shift = rule.split("_")
-    return {'N': [23, 7], 'D1': [7, 15], 'D2': [5, 13], 'E1': [15, 23], 'E2':[13, 21] }[shift]
+    day, shift = rule.split("_")
+    absolute_start_time = {'N': 0, 'D1': 8, 'D2': 5, 'E1': 16, 'E2':13 }[shift]
+    offset = 24*DAYS.index(day)
+    return [t := absolute_start_time + offset, t + SHIFT_LONG]
 
 def check_assignment_satisfaction(assignment, constraint_functions):
     is_satisfied = True
