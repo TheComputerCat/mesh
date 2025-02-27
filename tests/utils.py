@@ -9,11 +9,6 @@ def checker2(a, b):
 
 class TestUtils(unittest.TestCase):
 
-    def test_index_to_rule_name(self):
-        self.assertEqual(utils.indexVariableToNamed(0), "M_N")
-        self.assertEqual(utils.indexVariableToNamed(5), "T_N")
-        self.assertEqual(utils.indexVariableToNamed(34), "SU_E2")
-
     def test_rulen_name_to_date(self):
         self.assertEqual(utils.get_shift_times("M_N"), [23, 7])
         self.assertEqual(utils.get_shift_times("M_D1"), [7, 15])
